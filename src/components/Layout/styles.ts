@@ -1,47 +1,62 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
+import { appStyles, StyledCommonBlockContainer } from "../../styles";
 
-export const StyledWrapper = styled(Box)({
-  background: "rgb(20, 26, 31)",
-  width: "96vw",
-  minHeight: "96vh",
-  padding: "2vh 2vw",
-  display: "flex",
-  gap: "1vw",
-});
-
-const StyledBlockContainer = styled(Box)({
-  background: "rgba(67, 77, 91, 0.2)",
-  padding: "2vh 2vw",
-  borderRadius: 16,
-  color: "rgb(240, 247, 255)",
-});
-
-export const StyledMainContainer = styled(Box)({
+const { _paddings, _bgColors, _gaps, _borders } = appStyles;
+const StyledMainWrapper = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  flex: 10,
-  gap: "2vh",
   height: "96vh",
 });
+export const StyledWrapper = styled(Box)({
+  background: _bgColors.main,
+  padding: _paddings.main,
+  gap: _gaps.main.horizontal,
+  width: "96vw",
+  minHeight: "96vh",
+  display: "flex",
+});
+export const StyledSideBarWrapper = styled(StyledMainWrapper)(
+  ({ isMobileView }: { isMobileView?: boolean }) => ({
+    flex: 2,
+    ...(isMobileView && {
+      width: "70vw",
+      background: _bgColors.main,
+    }),
+  }),
+);
+export const StyledContentWrapper = styled(StyledMainWrapper)({
+  gap: _gaps.main.vertical,
+  flex: 10,
+});
 
-export const StyledHeader = styled(StyledBlockContainer)({});
+export const StyledHeaderWrapper = styled(StyledCommonBlockContainer)({
+  display: "flex",
+  justifyContent: "space-between",
+  ".icon-btn-menu": {
+    color: "white",
+  },
+});
 
-export const StyledContent = styled(StyledBlockContainer)({
-  background: "none",
-  padding: 0,
-  flex: 1,
+export const StyledHeaderContainer = styled(Box)({
+  width: "100%",
+});
+
+export const StyledContent = styled(StyledCommonBlockContainer)({
+  gap: _gaps.main.horizontal,
   display: "flex",
   flexDirection: "row",
-  gap: "2vw",
+  flex: 1,
+  background: "none",
+  padding: 0,
   height: "100%",
   overflow: "hidden",
 });
 
-export const StyledContentItem = styled(StyledBlockContainer)({
-  flex: 1,
+export const StyledContentItem = styled(StyledCommonBlockContainer)({
+  gap: _gaps.main.vertical,
   display: "flex",
   flexDirection: "column",
-  gap: "2vh",
+  flex: 1,
   overflow: "hidden",
 });

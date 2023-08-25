@@ -1,5 +1,5 @@
 import { IEmptyStateComponent } from "../../models/common";
-import { StyledEmptyStateContainer } from "./styles";
+import { StyledEmptyStateContainer } from "../../styles";
 
 const EmptyState = ({ message }: IEmptyStateComponent) => (
   <StyledEmptyStateContainer>

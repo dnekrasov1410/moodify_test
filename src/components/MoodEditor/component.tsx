@@ -1,5 +1,6 @@
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { Button, TextField } from "@mui/material";
 import { HexColorPicker } from "react-colorful";
 import { IMoodEditorComponentView } from "../../models/mood";
@@ -14,6 +15,7 @@ const MoodEditorComponent = ({
   onCancel,
   onConfirm,
   currentMood,
+  onRemove,
 }: IMoodEditorComponentView) => (
   <StyledMoodEditorContainer>
     <TextField
@@ -39,6 +41,13 @@ const MoodEditorComponent = ({
         <CloseIcon />
       </Button>
     </StyledButtonsContainer>
+    {currentMood.id ? (
+      <StyledButtonsContainer>
+        <Button variant={"outlined"} color={"error"} onClick={onRemove}>
+          <DeleteForeverIcon />
+        </Button>
+      </StyledButtonsContainer>
+    ) : null}
   </StyledMoodEditorContainer>
 );
 

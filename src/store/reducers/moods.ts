@@ -22,12 +22,12 @@ export const MoodsSlice = createSlice({
         mood.id === id ? { ...action.payload } : mood,
       );
     },
-    // remove mood TBD
-    removeMood: (state) => {
-      state.list = [];
+    // remove mood
+    removeMood: (state, action: PayloadAction<TMood["id"]>) => {
+      state.list = state.list.filter((mood) => mood.id !== action.payload);
     },
     // select mood
-    selectMood: (state, action: PayloadAction<TMood>) => {
+    selectMood: (state, action: PayloadAction<TMood | null>) => {
       state.selectedMood = action.payload;
     },
   },

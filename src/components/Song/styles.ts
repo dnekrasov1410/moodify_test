@@ -1,18 +1,11 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
+import { StyledCommonBlockContainer } from "../../styles";
 
-const StyledBlockContainer = styled(Box)({
-  background: "rgba(67, 77, 91, 0.2)",
-  padding: "1vh 1vw",
-  borderRadius: 16,
-  color: "rgb(240, 247, 255)",
-});
-
-export const StyledSongItemContainer = styled(StyledBlockContainer)({
+export const StyledSongItemContainer = styled(StyledCommonBlockContainer)({
   position: "relative",
   display: "flex",
   flexDirection: "row",
-  background: "",
   button: { display: "none" },
   "&:hover": {
     opacity: 0.7,

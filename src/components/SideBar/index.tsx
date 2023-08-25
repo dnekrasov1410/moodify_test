@@ -1,13 +1,20 @@
 import { faker } from "@faker-js/faker";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TMood } from "../../models/mood";
-import { addMood, selectMood, updateMood } from "../../store/reducers/moods";
+import {
+  addMood,
+  removeMood,
+  selectMood,
+  updateMood,
+} from "../../store/reducers/moods";
 import { createPlaylist } from "../../store/reducers/playlists";
 import { getMoodList, getSelectedMood } from "../../store/selectors/moods";
 import SideBarComponent from "./component";
 
 const SideBar = () => {
+  const isMobileView = useMediaQuery("(max-width:600px)");
   const dispatch = useDispatch();
   const [isCreateMode, setIsCreateMode] = useState(false);
   const [currentEditableMoodId, setCurrentEditableMoodId] = useState<
@@ -25,7 +32,10 @@ const SideBar = () => {
   const handleOnCreateMood = () => {
     setIsCreateMode(true);
   };
-  const handleOnRemoveMood = () => {}; // TBD
+  const handleOnRemoveMood = (id: TMood["id"]) => {
+    dispatch(removeMood(id));
+    dispatch(selectMood(null));
+  };
   const handleOnConfirmEditor = (mood: TMood) => {
     if (mood.id) {
       dispatch(updateMood(mood));
@@ -52,6 +62,8 @@ const SideBar = () => {
       onEditMood={handleOnEditMood}
       isCreateMode={isCreateMode}
       currentEditableMoodId={currentEditableMoodId}
+      isMobileView={isMobileView}
+      onRemove={handleOnRemoveMood}
     />
   );
 };

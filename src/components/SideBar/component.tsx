@@ -9,7 +9,6 @@ import {
   StyledMenuItem,
   StyledMenuItemContent,
   StyledMenuTitle,
-  StyledSideMenuWrapper,
 } from "./styles";
 
 const SideBarComponent = ({
@@ -22,9 +21,11 @@ const SideBarComponent = ({
   onCloseEditor,
   onConfirmEditor,
   onEditMood,
+  isMobileView,
+  onRemove,
 }: IMoodComponentView) => (
-  <StyledSideMenuWrapper>
-    <StyledMenuTitle>
+  <>
+    <StyledMenuTitle isMobileView={isMobileView}>
       <h4>
         {selectedMood
           ? `Your mood is: ${selectedMood.title}`
@@ -34,6 +35,7 @@ const SideBarComponent = ({
     <StyledMenuContent>
       {moodList.map((mood: TMood) => (
         <StyledMenuItem
+          isMobileView={isMobileView}
           moodColor={mood.color}
           isActive={selectedMood?.id === mood.id}
           onClick={() => onSelectMood(mood)}
@@ -43,6 +45,7 @@ const SideBarComponent = ({
               mood={mood}
               onCancel={onCloseEditor}
               onConfirm={onConfirmEditor}
+              onRemove={onRemove}
             />
           ) : (
             <StyledMenuItemContent>
@@ -60,7 +63,7 @@ const SideBarComponent = ({
         </StyledMenuItem>
       ))}
     </StyledMenuContent>
-    <StyledMenuFooter>
+    <StyledMenuFooter isMobileView={isMobileView}>
       {isCreateMode ? (
         <MoodEditor onCancel={onCloseEditor} onConfirm={onConfirmEditor} />
       ) : (
@@ -73,7 +76,7 @@ const SideBarComponent = ({
         </Button>
       )}
     </StyledMenuFooter>
-  </StyledSideMenuWrapper>
+  </>
 );
 
 export default SideBarComponent;

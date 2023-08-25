@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { IMoodEditorComponent, TMood } from "../../models/mood";
 import MoodEditorComponent from "./component";
 
-const MoodEditor = ({ onConfirm, onCancel, mood }: IMoodEditorComponent) => {
+const MoodEditor = ({
+  onConfirm,
+  onCancel,
+  onRemove,
+  mood,
+}: IMoodEditorComponent) => {
   const newMoodInitialState: TMood = {
     id: "",
     title: "",
@@ -24,6 +29,13 @@ const MoodEditor = ({ onConfirm, onCancel, mood }: IMoodEditorComponent) => {
     onCancel();
   };
 
+  const handleOnRemove = (e: MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onRemove && onRemove(currentMood.id);
+    handleOnReset();
+  };
+
   const handleOnChange = ({
     field,
     val,
@@ -39,6 +51,7 @@ const MoodEditor = ({ onConfirm, onCancel, mood }: IMoodEditorComponent) => {
       onConfirm={handleOnConfirm}
       onCancel={handleOnReset}
       onChange={handleOnChange}
+      onRemove={handleOnRemove}
       currentMood={currentMood}
     />
   );

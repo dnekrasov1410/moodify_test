@@ -1,5 +1,8 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/system";
+import { appStyles } from "../../styles";
+
+const { _gaps } = appStyles;
 
 export const StyledListContainer = styled(Box)({
   display: "flex",
@@ -17,14 +20,16 @@ export const StyledListHeader = styled(Box)({
 export const StyledListContent = styled(Box)({
   display: "flex",
   flexDirection: "column",
-  gap: "1vh",
+  gap: _gaps.sm.vertical,
   flex: 1,
   overflow: "auto",
   "::-webkit-scrollbar": { display: "none" },
 });
 
-export const StyledListFooter = styled(Box)({
-  display: "flex",
-  flexDirection: "row",
-  justifyContent: "space-between",
-});
+export const StyledListFooter = styled(Box)(
+  ({ isMobileView }: { isMobileView: boolean }) => ({
+    display: "flex",
+    flexDirection: isMobileView ? "column" : "row",
+    justifyContent: "space-between",
+  }),
+);

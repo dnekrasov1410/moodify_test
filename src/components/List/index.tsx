@@ -8,8 +8,10 @@ import {
   StyledListFooter,
   StyledListHeader,
 } from "./styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const List = ({ list, title, actions, total }: IListComponent) => {
+  const isMobileView = useMediaQuery("(max-width:600px)");
   return (
     <StyledListContainer>
       <StyledListHeader>
@@ -29,7 +31,7 @@ const List = ({ list, title, actions, total }: IListComponent) => {
           />
         ))}
       </StyledListContent>
-      <StyledListFooter>
+      <StyledListFooter isMobileView={isMobileView}>
         <h5>Total items: {total?.items}</h5>
         <h5>Total duration: {getParsedTime(total?.duration)}</h5>
       </StyledListFooter>

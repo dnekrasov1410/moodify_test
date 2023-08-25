@@ -22,12 +22,15 @@ export interface IMoodComponentView {
   readonly onEditMood: (id: TMood["id"]) => void;
   readonly onCreateMood: (e: MouseEvent<HTMLElement>) => void;
   readonly onCloseEditor: () => void;
+  readonly isMobileView: boolean;
+  readonly onRemove: (id: TMood["id"]) => void;
 }
 
 export interface IMoodEditorComponent {
   readonly mood?: TMood;
   readonly onCancel: () => void;
   readonly onConfirm: (mood: TMood) => void;
+  readonly onRemove?: (id: TMood["id"]) => void;
 }
 export interface IMoodEditorComponentView {
   readonly currentMood: TMood;
@@ -40,4 +43,5 @@ export interface IMoodEditorComponentView {
   }) => void;
   readonly onCancel: () => void;
   readonly onConfirm: (e: MouseEvent<HTMLElement>) => void;
+  readonly onRemove?: (e: MouseEvent<HTMLElement>) => void;
 }
