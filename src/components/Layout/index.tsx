@@ -1,11 +1,11 @@
-import { Button, Drawer, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Drawer, IconButton } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import React, { useState } from "react";
 import AllSongs from "../AllSongs";
 import Header from "../Header";
 import MoodPlaylist from "../MoodPlaylist";
 import SideBar from "../SideBar";
-import MenuIcon from "@mui/icons-material/Menu";
 import {
   StyledContent,
   StyledContentItem,

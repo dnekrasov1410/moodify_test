@@ -35,6 +35,7 @@ const SideBarComponent = ({
     <StyledMenuContent>
       {moodList.map((mood: TMood) => (
         <StyledMenuItem
+          key={mood.id}
           isMobileView={isMobileView}
           moodColor={mood.color}
           isActive={selectedMood?.id === mood.id}

@@ -21,6 +21,7 @@ const List = ({ list, title, actions, total }: IListComponent) => {
       <StyledListContent>
         {list.map(({ id, artist, name, duration }: ISong) => (
           <Song
+            key={id}
             id={id}
             artist={artist}
             name={name}

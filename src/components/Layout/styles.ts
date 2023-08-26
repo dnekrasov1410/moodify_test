@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/system";
 import { appStyles, StyledCommonBlockContainer } from "../../styles";
 
-const { _paddings, _bgColors, _gaps, _borders } = appStyles;
+const { _paddings, _bgColors, _gaps } = appStyles;
 const StyledMainWrapper = styled(Box)({
   display: "flex",
   flexDirection: "column",
