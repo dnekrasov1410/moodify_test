@@ -9,6 +9,7 @@ export const StyledSongItemContainer = styled(StyledCommonBlockContainer)({
   button: { display: "none" },
   "&:hover": {
     opacity: 0.7,
+    paddingRight: "1vw",
     button: {
       display: "flex",
       color: "white",
